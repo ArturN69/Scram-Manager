@@ -9,5 +9,4 @@ public class ScramManagerApplication {
     public static void main(String[] args) {
         SpringApplication.run(ScramManagerApplication.class, args);
     }
-
 }
