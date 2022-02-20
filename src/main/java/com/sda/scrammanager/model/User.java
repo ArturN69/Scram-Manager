@@ -1,16 +1,12 @@
 package com.sda.scrammanager.model;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Data
 @Entity
@@ -31,5 +27,14 @@ public class User {
     @CreationTimestamp
     private LocalDateTime creationTime;
 
+    @OneToMany
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    private Set<Project> createdProjects;
+
+    @OneToMany
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    private Set<TaskAssignee> assigneeTasks;
 
 }

@@ -1,11 +1,10 @@
 package com.sda.scrammanager.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Data
 @Entity
@@ -26,7 +25,18 @@ public class Project {
     private ProjectStatus status;
 
     @ManyToOne
-    //@EqualsAndHashCode.Exclude
-    //@ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     private User projectOwner;
+
+    @OneToMany
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    private Set<Sprint> sprints;
+
+    @OneToMany
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    private Set<Task> tasks;
+
 }

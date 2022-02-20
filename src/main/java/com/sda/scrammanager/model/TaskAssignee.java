@@ -4,31 +4,31 @@ package com.sda.scrammanager.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
-import java.util.Set;
 
 @Data
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Sprint {
+
+public class TaskAssignee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String sprintName;
-    private Date startDate;
-    private Date stopDate;
-
+    private LocalDateTime date;
 
     @ManyToOne
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    private Project projectName;
+    private User assigneeUser;
 
-    @ManyToMany(mappedBy = "sprints")
+    @ManyToOne
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    private Set<Task> tasks;
+    private Task assigneeTask;
+
 
 }
